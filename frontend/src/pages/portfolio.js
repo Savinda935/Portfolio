@@ -3,6 +3,16 @@ import { Github, Linkedin, Mail, ExternalLink, Code, Server, Network, ChevronDow
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import './portfolio.css';
+import About from './About';
+import herobg from '../images/herobg.png';
+import Skill from './Skill';
+import Project from './project';
+import petcare from '../images/petcare.jpg';
+import skillshare from '../images/skillshare.jpg';
+import uplink from '../images/uplink.jpg';
+import Alertescalation from '../images/Alertescalation.jpg';
+import Contact from './contact';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,7 +56,7 @@ const portfolioData = {
       link: 'https://github.com/Savinda935/Uplink-Availability-Manage-System',
       category: 'Enterprise',
       featured: true,
-      image: 'https://via.placeholder.com/300x200?text=Uplink+Monitoring',
+      image: uplink,
     },
     {
       name: '🚨 Alert Escalation System',
@@ -55,7 +65,7 @@ const portfolioData = {
       link: 'https://github.com/Savinda935/Pet-Care-System',
       category: 'Enterprise',
       featured: true,
-      image: 'https://via.placeholder.com/300x200?text=Alert+Escalation',
+      image: Alertescalation,
     },
     {
       name: '🚀 Skill-Sharing & Learning Platform',
@@ -64,7 +74,7 @@ const portfolioData = {
       link: 'https://github.com/Savinda935/Skill-Sharing-Learning-Platform_PAF',
       category: 'Web Development',
       featured: false,
-      image: 'https://via.placeholder.com/300x200?text=Skill+Sharing',
+      image: skillshare,
     },
     {
       name: '🐾 Pet Care System',
@@ -73,7 +83,7 @@ const portfolioData = {
       link: 'https://github.com/Savinda935/Pet-Care-System',
       category: 'Web Development',
       featured: false,
-      image: 'https://via.placeholder.com/300x200?text=Pet+Care',
+      image: petcare,
     },
   ],
   experience: [
@@ -192,105 +202,46 @@ const Portfolio = () => {
         </div>
       </nav>
 
-      <section id="hero" ref={(el) => (sectionsRef.current.hero = el)} className="hero-section">
-        <div className="hero-content fade-in-up">
-          <h1 className="glitch-text" data-text={portfolioData.name}>{portfolioData.name}</h1>
-          <p className="typewriter">{portfolioData.title}</p>
-          <p className="hero-tagline">{portfolioData.tagline}</p>
-          <div className="social-links">
-            <a href={portfolioData.contact.github} className="neo-button"><Github className="icon" /></a>
-            <a href={portfolioData.contact.linkedin} className="neo-button"><Linkedin className="icon" /></a>
-            <a href={`mailto:${portfolioData.contact.email}`} className="neo-button"><Mail className="icon" /></a>
-          </div>
-          <div className="hero-info">
-            <div className="info-item"><Building className="icon small" /> Currently at Fentons Information Technology</div>
-            <div className="info-item"><MapPin className="icon small" /> {portfolioData.contact.location}</div>
-          </div>
-          <div className="scroll-indicator"><ChevronDown className="icon" /></div>
-        </div>
-      </section>
-
-      <section id="about" ref={(el) => (sectionsRef.current.about = el)} className="section">
-        <div className="section-content fade-in-up">
-          <h2 className="section-title">About Me</h2>
-          <div className="glass-card"><p className="about-text">{portfolioData.about}</p></div>
-        </div>
-      </section>
-
-      <section id="skills" ref={(el) => (sectionsRef.current.skills = el)} className="section">
-        <div className="section-content">
-          <h2 className="section-title">Skills & Expertise</h2>
-          <div className="skills-grid">
-            {Object.entries(portfolioData.skills).map(([category, skills]) => (
-              <div key={category} className="glass-card skill-card fade-in-left">
-                <h3 className="skill-category">{category}</h3>
-                <div className="skill-list">
-                  {skills.map((skill) => (
-                    <div key={skill.name} className="skill-item">
-                      <div className="skill-header">
-                        <span>{skill.name}</span>
-                        <span>{skill.proficiency}%</span>
-                      </div>
-                      <div className="progress-bar">
-                        <div className="progress-fill" style={{ width: `${skill.proficiency}%` }}></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" ref={(el) => (sectionsRef.current.projects = el)} className="section">
-        <div className="section-content">
-          <h2 className="section-title">Featured Projects</h2>
-          <div className="project-section">
-            <h3 className="project-subsection">Enterprise Solutions</h3>
-            <div className="projects-grid">
-              {portfolioData.projects.filter((p) => p.featured).map((project) => (
-                <div key={project.name} className="project-card glass-card fade-in-up">
-                  <img src={project.image} alt={project.name} className="project-image" />
-                  <div className="project-header">
-                    <h4 className="project-title">{project.name}</h4>
-                    <span className="project-category">{project.category}</span>
-                  </div>
-                  <p className="project-description">{project.description}</p>
-                  <div className="project-tech">
-                    {project.tech.map((tech) => (
-                      <span key={tech} className="tech-tag">{tech}</span>
-                    ))}
-                  </div>
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="neo-button project-link">
-                    <ExternalLink className="icon small" /> View Project
-                  </a>
-                </div>
-              ))}
+      <section
+        id="hero"
+        ref={(el) => (sectionsRef.current.hero = el)}
+        className="hero-section"
+        style={{
+          backgroundImage: `url(${herobg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="hero-flex-container">
+          <div className="hero-content fade-in-up">
+            <h1 className="glitch-text" data-text={portfolioData.name}>{portfolioData.name}</h1>
+            <p className="typewriter">{portfolioData.title}</p>
+            <p className="hero-tagline">{portfolioData.tagline}</p>
+            <div className="social-links">
+              <a href={portfolioData.contact.github} className="neo-button"><Github className="icon" /></a>
+              <a href={portfolioData.contact.linkedin} className="neo-button"><Linkedin className="icon" /></a>
+              <a href={`mailto:${portfolioData.contact.email}`} className="neo-button"><Mail className="icon" /></a>
             </div>
-          </div>
-          <div className="project-section">
-            <h3 className="project-subsection">Other Projects</h3>
-            <div className="projects-grid">
-              {portfolioData.projects.filter((p) => !p.featured).map((project) => (
-                <div key={project.name} className="project-card glass-card fade-in-up">
-                  <img src={project.image} alt={project.name} className="project-image small" />
-                  <h4 className="project-title small">{project.name}</h4>
-                  <p className="project-description small">{project.description}</p>
-                  <div className="project-tech">
-                    {project.tech.map((tech) => (
-                      <span key={tech} className="tech-tag small">{tech}</span>
-                    ))}
-                  </div>
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="neo-button project-link small">
-                    <ExternalLink className="icon extra-small" /> View Project
-                  </a>
-                </div>
-              ))}
+            <div className="hero-info">
+              <div className="info-item"><Building className="icon small" /> Currently at Fentons Information Technology</div>
+              <div className="info-item"><MapPin className="icon small" /> {portfolioData.contact.location}</div>
             </div>
+            <div className="scroll-indicator"><ChevronDown className="icon" /></div>
+          </div>
+          <div className="hero-loader-container">
+            <div className="hero-loader"></div>
+            <div className="hero-loader"></div>
+            <div className="hero-loader"></div>
           </div>
         </div>
       </section>
+
+      <About about={portfolioData.about} ref={(el) => (sectionsRef.current.about = el)} />
+
+      <Skill skills={portfolioData.skills} ref={(el) => (sectionsRef.current.skills = el)} />
+
+      <Project projects={portfolioData.projects} ref={(el) => (sectionsRef.current.projects = el)} />
 
       <section id="experience" ref={(el) => (sectionsRef.current.experience = el)} className="section">
         <div className="section-content">
@@ -324,19 +275,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      <section id="contact" ref={(el) => (sectionsRef.current.contact = el)} className="section">
-        <div className="section-content">
-          <h2 className="section-title">Get In Touch</h2>
-          <div className="glass-card contact-card fade-in-up">
-            <p className="contact-text">Let's connect and discuss opportunities in software development and network engineering.</p>
-            <div className="contact-links">
-              <a href={`mailto:${portfolioData.contact.email}`} className="neo-button"><Mail className="icon" /> Send Email</a>
-              <a href={portfolioData.contact.linkedin} target="_blank" rel="noopener noreferrer" className="neo-button"><Linkedin className="icon" /> LinkedIn</a>
-              <a href={portfolioData.contact.github} target="_blank" rel="noopener noreferrer" className="neo-button"><Github className="icon" /> GitHub</a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Contact contact={portfolioData.contact} ref={(el) => (sectionsRef.current.contact = el)} />
 
       <footer className="footer">
         <div className="footer-content">
